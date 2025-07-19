@@ -1,118 +1,148 @@
-🐘 WILD EYE: Wild Animal Intrusion Detection System
-A real-time wildlife detection system using YOLOv8 to identify elephants and bears via webcam and trigger an alarm for early warning.
+# 🐘 WILD EYE: Wild Animal Intrusion Detection System
 
-📖 Introduction
-Wild animal intrusions near human settlements, farmlands, or forest-adjacent areas pose serious threats to both people and wildlife. Early detection and timely alerts are essential to prevent dangerous encounters and property damage.
+> A real-time wildlife detection system using **YOLOv8** to identify **elephants** and **bears** via webcam and trigger an **alarm** for early warning.
 
-This project provides a real-time animal detection system using the YOLOv8 deep learning model to identify specific wild animals—such as elephants and bears—through a live camera feed. Upon detection, a loud alarm is triggered to alert nearby individuals, allowing a quick response and deterrence.
 
-By combining computer vision, deep learning, and audio alerts, this system can serve as a low-cost, efficient, and customizable solution for wildlife monitoring, farm protection, and early warning systems in rural or high-risk zones.
+## 📖 Introduction
 
-⚠️ Note: The model is trained only for specific animals relevant to the target environment (primarily elephants and bears).
+> **Wild animal intrusions** near human settlements or farmlands pose serious threats to both people and wildlife.  
+> Early detection is crucial for **prevention, safety, and response**.
 
-🛠️ Tools & Technologies Used
-Tool / Library	Purpose
-YOLOv8 (Ultralytics)	Real-time object detection (PyTorch backend)
-OpenCV	Webcam access and frame rendering
-Pygame	Plays alarm sound on detection
-Python 3.8+	Core scripting language
-Threading	Non-blocking alarm execution
-Custom YOLO Model	Trained to recognize elephants and bears
+**WILD EYE** is a real-time intrusion detection system that leverages computer vision and deep learning to detect elephants and bears using a webcam feed. When a target animal is detected, the system plays a **loud alarm** to warn nearby humans and deter wildlife.
 
-🚀 Quick Start
-1. Clone the repository
-bash
-Copy
-Edit
+> ⚠️ **Note:** This version of the model is trained to detect **only elephants and bears**. Additional animals can be added with retraining.
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool / Library            | Purpose                                    |
+|---------------------------|--------------------------------------------|
+| **YOLOv8 (Ultralytics)**  | Real-time object detection (PyTorch)       |
+| **OpenCV**                | Webcam access & frame rendering            |
+| **Pygame**                | Alarm sound playback                       |
+| **Python 3.8+**           | Scripting language                         |
+| **Threading**             | Non-blocking alarm execution               |
+| **Custom YOLO Model**     | Trained to recognize elephants and bears   |
+
+---
+
+## 🚀 Quick Start
+
+
+### 1️⃣ Clone the repository
+```bash
 git clone https://github.com/aflah-m/WILD-EYE.git
 cd WILD-EYE
-2. Install dependencies
-bash
-Copy
-Edit
+```
+### 2️⃣ Install dependencies
+```bash
 pip install ultralytics opencv-python pygame
-3. Run the detection script
-bash
-Copy
-Edit
+```
+### 3️⃣ Run the detection script
+```bash
 python animal_detection.py
-🎥 Make sure your webcam is accessible and not used by other applications.
+```
+🎥 Ensure your webcam is accessible and not used by other applications.
 
-📦 Files Included
-File	Description
-animal_detection.py	Main Python script
-best.pt	YOLOv8 custom-trained model for detection
-alarm.wav	Alarm sound triggered upon detection
-README.md	Project documentation
+## 📦 Included Files
 
-⚠️ Python Interpreter Warning Fix (VS Code)
-If you see a warning about the Python interpreter:
+| File                  | Description                              |
+|-----------------------|------------------------------------------|
+| animal_detection.py   | Main Python detection script             |
+| best.pt               | YOLOv8 model trained on elephants & bears|
+| alarm.wav             | Sound played when animal is detected     |
+| requirements.txt      | Dependency list for quick installation   |
+| README.md             | Project documentation (this file)        |
 
-Press Ctrl + Shift + P
 
-Choose "Python: Select Interpreter"
+### > ⚠️ **Python Interpreter Tip (VS Code)**  
+> If you see a warning about selecting a Python interpreter in VS Code:  
+> - Press `Ctrl + Shift + P`  
+> - Choose **Python: Select Interpreter**  
+> - Select `.venv/Scripts/python.exe` or your environment's interpreter
 
-Select .venv/Scripts/python.exe or your active environment interpreter.
 
-🧠 Model Details
-best.pt is a custom-trained YOLOv8 model.
+## 🧠 Model Details
 
-Trained primarily for:
+- 🧾 **Model**: `best.pt` (YOLOv8 custom)
+- 📁 **Format**: COCO-style dataset (YOLOv8 compatible)
 
-Elephant (class ID 20)
+### 🏷️ Class Mappings
 
-Bear (class ID 21)
+| Class ID | Animal     |
+|----------|------------|
+| 20       | 🐘 Elephant |
+| 21       | 🐻 Bear     |
 
-Uses a COCO-style dataset
+### 🔍 Inspect Class Names
 
-📁 Dataset Structure (for retraining)
-bash
-Copy
-Edit
+```python
+print(model.names)
+```
+
+## 🗂️ Dataset Structure (for Retraining)
+
+## 🗂️ Dataset Structure (for Retraining)
+
+```plaintext
 datasets/
 ├── images/
 │   ├── train/
 │   ├── val/
-│   └── test/         # Optional
+│   └── test/         
 ├── labels/
 │   ├── train/
 │   ├── val/
 │   └── test/
-Each label file must follow YOLO format:
+```
 
-php-template
-Copy
-Edit
+
+Each `.txt` label file inside `labels/` must follow the **YOLO format**:
 <class_id> <x_center> <y_center> <width> <height>
-All values should be normalized between 0 and 1.
+All values must be **normalized** between `0.0` and `1.0`.
 
-🔧 Customization
-To detect more animals:
-Retrain or fine-tune best.pt with additional classes.
+## 🔧 Customization
 
-Replace best.pt in the project.
+### ➕ Add More Animals
+- Retrain or fine-tune `best.pt` with your new dataset.
+- Replace the model file in the project directory.
+- Update the `target_ids` list in `animal_detection.py`.
 
-Update the target_ids list in animal_detection.py.
+### 🔊 Change Alarm Sound
+- Replace `alarm.wav` with any other `.wav` file of your choice.
 
-To change the alarm sound:
-Replace alarm.wav with your preferred .wav file.
+## 🖼️ Sample Output
 
-🖼️ Sample Output
-(Insert detection screenshots or sample video clips here.)
+> *(screenshots showing bounding boxes and detection results)*
 
-📌 Notes
-Uses YOLOv8 via Ultralytics Python package.
+![Elephant Detection](./image01.webp)
 
-Automatically leverages GPU if available.
+### ✅ Features:
+- Bounding boxes drawn over detected animals
+- 🔊 Alarm sound played once per detection
+- 🖥️ Console log example:
 
-Threading is used to prevent lag during alarm playback.
 
-📜 License
-This project is open-source and available under the MIT License.
+## 📌 Notes
 
-🙏 Acknowledgements
-Ultralytics YOLOv8
+- ✅ Automatically uses **GPU** if available  
+- 🔁 Alarm uses **threading** to prevent lag or freezing  
+- 🧠 Based on a **YOLOv8 custom-trained model**  
+- 📴 Fully **offline** — no internet or cloud services needed  
 
-COCO Dataset
+---
 
-Python, OpenCV, Pygame
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 🙏 Acknowledgements
+
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
+- [COCO Dataset](https://cocodataset.org/)
+- [Python](https://www.python.org/)
+- [OpenCV](https://opencv.org/)
+- [Pygame](https://www.pygame.org/)
