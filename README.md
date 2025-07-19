@@ -81,7 +81,6 @@ python animal_detection.py
 print(model.names)
 ```
 
-## 🗂️ Dataset Structure (for Retraining)
 
 ## 🗂️ Dataset Structure (for Retraining)
 
