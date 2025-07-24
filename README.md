@@ -1,4 +1,4 @@
-# 🐘 WILD EYE: Wild Animal Intrusion Detection System
+# 🐘 WILD-AWARE: Wild Animal Intrusion Detection System
 
 > A real-time wildlife detection system using **YOLOv8** to identify **elephants** and **bears** via webcam and trigger an **alarm** for early warning.
 
@@ -8,7 +8,7 @@
 > **Wild animal intrusions** near human settlements or farmlands pose serious threats to both people and wildlife.  
 > Early detection is crucial for **prevention, safety, and response**.
 
-**WILD EYE** is a real-time intrusion detection system that leverages computer vision and deep learning to detect elephants and bears using a webcam feed. When a target animal is detected, the system plays a **loud alarm** to warn nearby humans and deter wildlife.
+**WILD Aware** is a real-time intrusion detection system that leverages computer vision and deep learning to detect elephants and bears using a webcam feed. When a target animal is detected, the system plays a **loud alarm** to warn nearby humans and deter wildlife.
 
 > ⚠️ **Note:** This version of the model is trained to detect **only elephants and bears**. Additional animals can be added with retraining.
 
@@ -32,8 +32,8 @@
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/aflah-m/WILD-EYE.git
-cd WILD-EYE
+git clone https://github.com/aflah-m/WILD-AWARE.git
+cd WILD-AWARE
 ```
 ### 2️⃣ Install dependencies
 ```bash
